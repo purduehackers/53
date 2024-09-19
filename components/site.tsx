@@ -77,7 +77,7 @@ export function Site() {
                 value={inputValue}
                 id="creations"
                 onChange={(e) => setInputValue(e.target.value)}
-                className="flex-grow text-gray-800 bg-slate-50"
+                className="text-base flex-grow text-gray-800 bg-slate-50"
               />
             </div>
             <Button type="submit" className="w-full sm:w-32">
