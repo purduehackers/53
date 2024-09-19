@@ -49,7 +49,7 @@ export function Site() {
       <h1 className="text-7xl md:text-5xl font-bold text-center text-gray-800">
         53
       </h1>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-2">
         <h1 className="text-gray-800 font-bold text-2xl">
           🌿 How to decode the vine
         </h1>
