@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-type AnswerState = "PENDING" | "CORRECT";
+type AnswerState = "PENDING" | "CORRECT" | "INCORRECT";
 
 type ApiResponse = {
   correct: boolean;
@@ -28,6 +28,11 @@ export function Site() {
 
     if (res.correct) {
       setAnswerState("CORRECT");
+    } else {
+      setAnswerState("INCORRECT");
+      setTimeout(() => {
+        setAnswerState("PENDING");
+      }, 1000);
     }
     setCheckingAnswer(false);
   };
@@ -35,7 +40,11 @@ export function Site() {
   return (
     <div
       className={`min-h-screen bg-gradient-to-t ${
-        answerState === "PENDING" ? "from-amber-100" : "from-green-100"
+        answerState === "PENDING"
+          ? "from-amber-100"
+          : answerState === "CORRECT"
+          ? "from-green-100"
+          : "from-red-100"
       } to-white transition-all duration-1000 flex flex-col items-center justify-center p-4 gap-12`}
     >
       <h1 className="text-7xl md:text-5xl font-bold text-center text-gray-800">
@@ -79,11 +88,12 @@ export function Site() {
         </form>
         <p
           className={`text-gray-800 text-center ${
-            answerState === "CORRECT" ? "visible" : "invisible"
-          }`}
+            answerState === "INCORRECT" ? "font-bold" : ""
+          } ${answerState === "PENDING" ? "invisible" : "visible"}`}
         >
-          ✅✅✅✅✅ CORRECT good job. now show this to an organizer for free
-          cookies 🍪
+          {answerState === "CORRECT"
+            ? "✅✅✅✅✅ CORRECT good job. now show this to an organizer for free cookies 🍪"
+            : "INCORRECT!!!!!!!!!!!!!!"}
         </p>
       </div>
     </div>
