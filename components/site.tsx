@@ -24,7 +24,6 @@ export function Site() {
         answer: inputValue,
       }),
     }).then((r) => r.json());
-    console.log({ res });
 
     if (res.correct) {
       setAnswerState("CORRECT");
