@@ -20,7 +20,7 @@ export function Site() {
       </h1>
       <div className="flex flex-col">
         <h1 className="text-gray-800 font-bold text-2xl">
-          How to decode the vine
+          🌿 How to decode the vine
         </h1>
         <div className="rounded-lg overflow-hidden shadow-lg">
           <img
@@ -31,9 +31,7 @@ export function Site() {
         </div>
       </div>
 
-      <p className="text-center text-gray-800 text-2xl">
-        The password is horse
-      </p>
+      <p className="text-center text-gray-800 text-xl">The password is horse</p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-md mb-8">
         <div className="flex flex-col justify-center items-end sm:flex-row gap-4">
