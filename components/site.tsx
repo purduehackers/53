@@ -13,9 +13,11 @@ type ApiResponse = {
 export function Site() {
   const [inputValue, setInputValue] = useState("");
   const [answerState, setAnswerState] = useState<AnswerState>("PENDING");
+  const [checkingAnswer, setCheckingAnswer] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setCheckingAnswer(true);
     const res: ApiResponse = await fetch("/api/answer", {
       method: "POST",
       body: JSON.stringify({
@@ -27,6 +29,7 @@ export function Site() {
     if (res.correct) {
       setAnswerState("CORRECT");
     }
+    setCheckingAnswer(false);
   };
 
   return (
@@ -69,14 +72,14 @@ export function Site() {
                 className="flex-grow text-gray-800 bg-slate-50"
               />
             </div>
-            <Button type="submit" className="w-full sm:w-auto">
-              Check answer
+            <Button type="submit" className="w-full sm:w-32">
+              {checkingAnswer ? "Checking..." : "Check answer"}
             </Button>
           </div>
         </form>
         <p
           className={`text-gray-800 text-center ${
-            answerState === "CORRECT" ? "visible" : "hidden"
+            answerState === "CORRECT" ? "visible" : "invisible"
           }`}
         >
           ✅✅✅✅✅ CORRECT good job. now show this to an organizer for free
