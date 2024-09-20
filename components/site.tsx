@@ -62,7 +62,9 @@ export function Site() {
         </div>
       </div>
 
-      <p className="text-center text-gray-800 text-xl">The password is horse</p>
+      <p className="text-center text-gray-800 text-xl">
+        The password is at the top of this website
+      </p>
 
       <div className="flex flex-col items-center gap-4 mb-12 w-full max-w-md">
         <form onSubmit={handleSubmit} className="w-full max-w-md">
